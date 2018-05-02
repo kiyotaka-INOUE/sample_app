@@ -1,8 +1,15 @@
 SampleApp::Application.routes.draw do
-  root  'static_pages#home'
   
+  # devise_for  :users　を、↓ に変更
+  devise_for :users, :controllers => {
+    :registrations => "registrations"
+  }
   resources :users, only: [:show]
-  devise_for :users
+  
+  # 動画にて下記の様にしていたが、テキストでは上記の様に順番が逆になっている！
+  # resources :users, only: [:show]
+  # devise_for :users
+  root  'static_pages#home'  
   match '/help',    to: 'static_pages#help',    via: 'get'
   match '/about',   to: 'static_pages#about',   via: 'get'
   match '/contact', to: 'static_pages#contact', via: 'get'
