@@ -1,10 +1,11 @@
 SampleApp::Application.routes.draw do
-  
+
   # devise_for  :users　を、↓ に変更
   devise_for :users, :controllers => {
     :registrations => "registrations"
   }
-  resources :users, only: [:show]
+  # resources :users, only: [:show]
+  resources :users, only: [:show, :index]
   
   # 動画にて下記の様にしていたが、テキストでは上記の様に順番が逆になっている！
   # resources :users, only: [:show]
