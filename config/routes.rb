@@ -5,7 +5,8 @@ SampleApp::Application.routes.draw do
     :registrations => "registrations"
   }
   # resources :users, only: [:show]
-  resources :users, only: [:show, :index]
+  # resources :users, only: [:show, :index]
+  resources :users, only: [:show, :index, :destroy]
   
   # 動画にて下記の様にしていたが、テキストでは上記の様に順番が逆になっている！
   # resources :users, only: [:show]
