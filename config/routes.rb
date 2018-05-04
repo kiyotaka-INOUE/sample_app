@@ -7,6 +7,7 @@ SampleApp::Application.routes.draw do
   # resources :users, only: [:show]
   # resources :users, only: [:show, :index]
   resources :users, only: [:show, :index, :destroy]
+  resources :microposts, only: [:create, :destroy]     # マイクロポストを追加。
   
   # 動画にて下記の様にしていたが、テキストでは上記の様に順番が逆になっている！
   # resources :users, only: [:show]
