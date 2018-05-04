@@ -19,7 +19,10 @@ class UsersController < ApplicationController
   
   def show
     @user = User.find(params[:id])
+    # @micropostsインスタンス変数をユーザーshowアクションに追加する
+    @microposts = @user.microposts.paginate(page: params[:page])
   end
+  
   
   # 管理者以外のアクセスを制限するbefore_action
   private
