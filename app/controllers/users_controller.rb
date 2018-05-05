@@ -1,10 +1,7 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!, :except=>[:show]
-  before_action :admin_user,     only: :destroy    # 管理者以外のアクセスを制限するbefore_action
+  # before_action :admin_user,     only: :destroy    # 管理者以外のアクセスを制限するbefore_action
   
-  # def index
-  #   @users = User.all
-  # end
   # paginateを用いることでページネーション（ページ送り）が使用できます。
   # やり方としてはindexアクションのallの代わりにpaginateを使用します。
   def index
@@ -30,5 +27,4 @@ class UsersController < ApplicationController
     def admin_user
       redirect_to(root_path) unless current_user.admin?
     end
-    
 end
