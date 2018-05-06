@@ -5,8 +5,14 @@ SampleApp::Application.routes.draw do
     :registrations => "registrations"
   }
   
-  resources :users, only: [:show, :index, :destroy]
-  resources :microposts, only: [:create, :destroy]     # マイクロポストを追加。
+  resources :users, only: [:show, :index, :destroy] do
+    member do
+      get :following, :followers
+    end
+  end
+  
+  resources :microposts,    only: [:create, :destroy]    # マイクロポストを追加。
+  resources :relationships, only: [:create, :destroy]
   
   # 動画にて下記の様にしていたが、テキストでは上記の様に順番が逆になっている！
   # resources :users, only: [:show]
